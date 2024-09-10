@@ -1,0 +1,19 @@
+| Clientes          | Telefones          | TipoTelefone        | Estados
+| ------------      | --------------     | -------------       | --------
+| id_cliente  PK    | id_telefone  PK    | id_tipo_telefone PK | id_estado  PK
+| razao_social      | numero             | descricao           | uf
+| estado_id  FK --> | cliente_id  FK --> | tipo_telefone_id FK | nome
+
+
+SELECT 
+    c.id_cliente,
+    c.razao_social,
+    t.numero AS telefone
+FROM 
+    Clientes c
+JOIN 
+    Telefones t ON c.id_cliente = t.cliente_id
+JOIN 
+    Estados e ON c.estado_id = e.id_estado
+WHERE 
+    e.uf = 'SP';
